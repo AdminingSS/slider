@@ -1,0 +1,13 @@
+.slider-gallery {
+    overflow: hidden;
+    position: relative;
+    height: 300px;
+}
+
+.slider-slides {
+    position: absolute;
+}
+
+.slider-slide {
+    display: inline-block;
+}
