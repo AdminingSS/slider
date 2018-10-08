@@ -1,5 +1,4 @@
-function ready() {
-    const slider = new Slider('slider');
-}
+const options = {};
+options.elem = document.getElementById('slider');
 
-document.addEventListener("DOMContentLoaded", ready);
+const slider = new Slider(options);
