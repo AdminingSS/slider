@@ -17,7 +17,7 @@ class Slider {
         
         this.currentSlide = 0;
         this.slidesCount = 0;
-        this.slidesOffsets = [];
+        //this.slidesOffsets = [];
 
         this.init();
     }
@@ -39,13 +39,39 @@ class Slider {
 
         this.elem.appendChild(this.wrapper);
 
+        const prevArrow = document.createElement('div');
+        prevArrow.classList.add('prev-arrow');
+        this.elem.appendChild(prevArrow);
+
+        const nextArrow = document.createElement('div');
+        nextArrow.classList.add('next-arrow');
+        this.elem.appendChild(nextArrow);
+
         this.slidesCount = this.wrapper.children.length;
 
-        for(let i = 0; i < this.slidesCount; i++) {
-            this.slidesOffsets[i] = this.wrapper.children[i].offsetLeft;
-        }
+        // for(let i = 0; i < this.slidesCount; i++) {
+        //     this.slidesOffsets[i] = this.wrapper.children[i].offsetLeft;
+        // }
 
         this.showSlide(this.currentSlide);
+
+        this.elem.addEventListener('click', this.eventHandler.bind(this));
+    }
+
+    eventHandler (event) {
+        let target = event.target;
+
+        while (target != this.elem) {
+            if (target.classList.contains('prev-arrow')) {
+                this.prevSlide();
+                return;
+            }
+            if (target.classList.contains('next-arrow')) {
+                this.nextSlide();
+                return;
+            }
+            target = target.parentNode;
+        }
     }
 
     showSlide(number) {

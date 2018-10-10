@@ -12,3 +12,25 @@
 .slider-slide {
     display: inline-block;
 }
+
+.prev-arrow {
+    position: absolute;
+    top: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: #000;
+    cursor: pointer;
+
+    left: 10px;
+}
+
+.next-arrow {
+    position: absolute;
+    top: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: #000;
+    cursor: pointer;
+
+    right: 10px;
+}
