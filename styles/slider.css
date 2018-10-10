@@ -6,6 +6,7 @@
 
 .slider-slides {
     position: absolute;
+    width: 9999px;
 }
 
 .slider-slide {

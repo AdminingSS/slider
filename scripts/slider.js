@@ -16,6 +16,8 @@ class Slider {
         };
         
         this.currentSlide = 0;
+        this.slidesCount = 0;
+        this.slidesOffsets = [];
 
         this.init();
     }
@@ -26,14 +28,41 @@ class Slider {
 
         const slideElems = this.elem.children;
 
-        const wrapper = document.createElement('div');
-        wrapper.classList.add(this.sliderClasses.container);
+        //wrap to div
+        this.wrapper = document.createElement('div');
+        this.wrapper.classList.add(this.sliderClasses.container);
 
         while(slideElems.length) {
             slideElems[0].classList.add(this.sliderClasses.slide);
-            wrapper.appendChild(slideElems[0]);
+            this.wrapper.appendChild(slideElems[0]);
         }
 
-        this.elem.appendChild(wrapper);
+        this.elem.appendChild(this.wrapper);
+
+        this.slidesCount = this.wrapper.children.length;
+
+        for(let i = 0; i < this.slidesCount; i++) {
+            this.slidesOffsets[i] = this.wrapper.children[i].offsetLeft;
+        }
+
+        this.showSlide(this.currentSlide);
     }
+
+    showSlide(number) {
+        const newLeft = -this.wrapper.children[number].offsetLeft;
+        this.wrapper.style.left = newLeft + 'px';
+        const newWidth = this.wrapper.children[number].offsetWidth || this.wrapper.children[number].getBoundingClientRect().width;
+        if (newWidth) this.elem.style.width = newWidth + 'px';
+    }
+
+    prevSlide() {
+        this.currentSlide = Math.max(this.currentSlide - 1, 0);
+        this.showSlide(this.currentSlide);
+    }
+
+    nextSlide() {
+        this.currentSlide = Math.min(this.currentSlide + 1, this.slidesCount - 1);
+        this.showSlide(this.currentSlide);
+    }
+
 }
