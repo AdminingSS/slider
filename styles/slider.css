@@ -2,6 +2,7 @@
     overflow: hidden;
     position: relative;
     height: 300px;
+    width: 600px;
 }
 
 .slider-slides {
@@ -11,6 +12,7 @@
 
 .slider-slide {
     display: inline-block;
+    width: 600px;
 }
 
 .prev-arrow {
