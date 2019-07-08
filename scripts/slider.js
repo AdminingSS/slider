@@ -1,10 +1,5 @@
 class Slider {
 
-    //options - объект настроек или строка
-    //options.id - id элемента
-    //options.cssSelector - css селектор элемента
-    //options.elem - переданный элемент
-
     constructor (options) {
 
         this.elem = options.elem;
@@ -56,7 +51,7 @@ class Slider {
 
         const slideElems = this.elem.children;
 
-        //wrap to div
+        //wrapper = track
         this.wrapper = document.createElement('div');
         this.wrapper.classList.add(this.sliderClasses.container);
 
